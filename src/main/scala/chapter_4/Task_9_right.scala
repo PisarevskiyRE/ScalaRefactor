@@ -1,6 +1,7 @@
 package chapter_4
 
 object Task_9_right {
+
   final case class Graduation(large: Double)
 
   object Default {
