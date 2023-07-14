@@ -14,3 +14,7 @@ object Main extends Enumeration
     println(s"The third value = ${Main.third}")
   }
 }
+
+
+
+

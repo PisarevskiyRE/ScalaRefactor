@@ -20,8 +20,6 @@ object Task_9_right {
 
   sealed abstract class Category(val defaultUnit: MeasurementUnit)
 
-  final case object Length extends Category(Meter)
-
   abstract class MeasurementUnit(
                                   val label: String,
                                   val abbreviation: String,
@@ -32,6 +30,8 @@ object Task_9_right {
     def initialValue: Double = Default.InitialValue
 
   }
+
+  final case object Length extends Category(Meter)
 
   sealed abstract class LengthUnit(
                                     label: String,
