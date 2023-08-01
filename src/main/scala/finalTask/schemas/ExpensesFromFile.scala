@@ -2,7 +2,15 @@ package finalTask.schemas
 
 import java.time.LocalDate
 
-// для сырых данных из файла
+trait DataFile{
+  val id: Int
+  val date: LocalDate
+  val expense_name: String
+  val expense_category: String
+  val amount: Double
+  val currency: String
+}
+
 case class ExpensesFromFile(
                      id: Int,
                      date: LocalDate,

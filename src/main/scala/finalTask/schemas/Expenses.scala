@@ -2,10 +2,19 @@ package finalTask.schemas
 
 import java.time.LocalDate
 
-//case class Expenses[A <: AbstractCurrency](
-//                             id: Int,
-//                             date: LocalDate,
-//                             expense_name: String,
-//                             expense_category: String,
-//                             currency: AbstractCurrency
-//                           ) extends DataFile
+trait DataStract{
+  val id: Int
+  val date: LocalDate
+  val expense_name: String
+  val expense_category: String
+  val currency: Currency
+}
+
+case class Expenses(
+                             id: Int,
+                             date: LocalDate,
+                             expense_name: String,
+                             expense_category: String,
+                             currency: Currency
+                           ) extends DataStract
+
