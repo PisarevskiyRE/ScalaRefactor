@@ -2,7 +2,6 @@ package finalTask.schemas
 
 import java.time.LocalDate
 
-// добавить проверки
 object FileRule {
   val f: Array[String] => ExpensesFromFile = {
     line => {

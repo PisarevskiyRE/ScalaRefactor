@@ -4,24 +4,29 @@ package finalTask.schemas
 import finalTask.transforms.Converter
 
 case class Currency(amount: Double, designation: String) {
-  def + (that: Currency): Currency =
-    Currency(this.amount + that.amount, designation)
 
-  def * (x: Double): Currency =
+  def +(that: Currency)(implicit defaultCurrency: String): Currency =
+    if (designation == defaultCurrency)
+      Currency(this.amount + that.amount, designation)
+    else {
+      val convertedAmount = this.convert(defaultCurrency).amount + that.amount
+      Currency(convertedAmount, defaultCurrency)
+    }
+
+  def *(x: Double): Currency =
     Currency((this.amount * x).toDouble, designation)
 
-  def - (that: Currency): Currency =
-    Currency(this.amount - that.amount, designation)
-
-  def / (that: Double): Currency =
-    Currency((this.amount / that).toDouble, designation)
-
-  def / (that: Currency): Double =
-    this.amount.toDouble / that.amount
+  def -(that: Currency)(implicit defaultCurrency: String): Currency =
+    if (designation == defaultCurrency)
+      Currency(this.amount - that.amount, designation)
+    else {
+      val convertedAmount = this.convert(defaultCurrency).amount - that.amount
+      Currency(convertedAmount, defaultCurrency)
+    }
 
   def convert(to: String): Currency = {
     val rate = Converter.exchangeRate(designation)(to)
-    val convertedAmount = (this.amount.toDouble * rate).toDouble
+    val convertedAmount = (this.amount * rate).toDouble
     Currency(convertedAmount, to)
   }
 

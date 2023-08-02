@@ -19,11 +19,8 @@ class TxtReader[A <: DataFile](rule: Array[String] => A)(implicit ct: ClassTag[A
       "В файле нет строк"
     )
 
-
     val file = Source.fromFile(path)
     val fileLines = file.getLines()
-
-    //file.close()
 
     val dataObjects =
       fileLines.map(
