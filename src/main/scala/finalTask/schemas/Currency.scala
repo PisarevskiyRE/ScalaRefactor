@@ -1,6 +1,5 @@
 package finalTask.schemas
 
-
 import finalTask.transforms.Converter
 
 case class Currency(amount: Double, designation: String) {

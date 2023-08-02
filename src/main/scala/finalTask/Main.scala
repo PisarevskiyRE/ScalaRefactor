@@ -1,6 +1,5 @@
 package finalTask
 
-
 import finalTask.readers.TxtReader
 import finalTask.schemas._
 import finalTask.transforms._

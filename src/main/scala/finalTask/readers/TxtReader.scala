@@ -1,6 +1,5 @@
 package finalTask.readers
 
-
 import finalTask.schemas.DataFile
 
 import java.io.File
