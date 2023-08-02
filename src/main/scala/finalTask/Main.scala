@@ -13,18 +13,19 @@ object Main extends App{
 
   object Default{
     val TopCount: Int = 10
-    val CurrencyList: Set[String] = Set("Rub","Usd","Eur")
+    val CurrencyList: Set[String] = Converter.exchangeRate.keySet
     implicit val DefaultCurrency = "Rub"
   }
 
   import Default.DefaultCurrency
 
 
+  val path = if (args.length > 0) args(0)
+             else "src/main/resources/expenses.txt"
+
+
   val txtReader = new TxtReader[ExpensesFromFile](FileRule.f)
-
-  val testData: Seq[ExpensesFromFile] = txtReader.read("src/main/resources/expenses.txt")
-
-
+  val testData: Seq[ExpensesFromFile] = txtReader.read(path)
   val parserProvider = new ParserProvider(Default.CurrencyList)
 
 
@@ -72,7 +73,7 @@ object Main extends App{
       }
       val leadingCategory: (String, Currency) = expensesSumByCategory.maxBy { case (_, currency) => currency.amount }
 
-      s"Категория-лидер по расходам: ${leadingCategory._1}, сумма: ${leadingCategory._2}"
+      leadingCategory.toString()
     }
   }
 

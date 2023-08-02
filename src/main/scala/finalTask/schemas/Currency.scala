@@ -14,7 +14,7 @@ case class Currency(amount: Double, designation: String) {
     }
 
   def *(x: Double): Currency =
-    Currency((this.amount * x).toDouble, designation)
+    Currency((this.amount * x), designation)
 
   def -(that: Currency)(implicit defaultCurrency: String): Currency =
     if (designation == defaultCurrency)
@@ -26,7 +26,7 @@ case class Currency(amount: Double, designation: String) {
 
   def convert(to: String): Currency = {
     val rate = Converter.exchangeRate(designation)(to)
-    val convertedAmount = (this.amount * rate).toDouble
+    val convertedAmount = (this.amount * rate)
     Currency(convertedAmount, to)
   }
 
@@ -34,7 +34,7 @@ case class Currency(amount: Double, designation: String) {
     if (n == 1) 0 else 1 + decimals(n / 10)
 
   override def toString: String =
-    ((amount.toDouble / Currency(1, designation).amount.toDouble)
+    ((amount / Currency(1, designation).amount)
       formatted ("%." + decimals(Currency(1, designation).amount) + "f")
       + " " + designation)
 }

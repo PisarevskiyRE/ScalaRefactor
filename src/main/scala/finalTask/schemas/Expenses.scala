@@ -2,7 +2,7 @@ package finalTask.schemas
 
 import java.time.LocalDate
 
-trait DataStract{
+trait DataStruct{
   val id: Int
   val date: LocalDate
   val expense_name: String
@@ -16,5 +16,5 @@ case class Expenses(
                              expense_name: String,
                              expense_category: String,
                              currency: Currency
-                           ) extends DataStract
+                           ) extends DataStruct
 
