@@ -2,6 +2,10 @@ package finalTask.schemas
 
 import finalTask.transforms.Converter
 
+
+// раздел на две сущности так как возможно структура могла сильно отличаться от той что в файле
+// какие нибудь значительные преобразование
+// то есть сначала сырые потом измененные/дополненные
 trait Default {
   val TopCount: Int
   val CurrencyList: Set[CurrencyCode.CurrencyName]

@@ -6,6 +6,8 @@ trait Rule{
   val f: Array[String] => ExpensesFromFile
 }
 
+
+// значенияд создавал, думал сначала проверки добавить и забыл
 object FileRule extends Rule{
   val f: Array[String] => ExpensesFromFile = {
     line => {

@@ -1,6 +1,5 @@
 package finalTask.schemas
 
-import finalTask.schemas.CurrencyCode.CurrencyCode
 import finalTask.transforms.Converter
 
 case class Currency private(amount: Double, designation: CurrencyCode.CurrencyName) {
