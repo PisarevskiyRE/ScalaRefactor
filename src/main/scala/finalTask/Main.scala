@@ -19,12 +19,14 @@ object Main extends App{
 
 
   val staticsService = new StaticsService(
-    StaticsServiceParameters(
-      path,
-      FileRule
-  ),
-      Default
+        StaticsServiceParameters(
+          path,
+          StatisticsFunctions.getStatics(),
+          FileRule
+      )
   )
+
+  staticsService.getResult().foreach(println)
 
 
 }

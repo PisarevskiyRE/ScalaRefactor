@@ -2,16 +2,16 @@ package finalTask.schemas
 
 import finalTask.transforms.Converter
 
-trait DefaultValues {
+trait Default {
   val TopCount: Int
   val CurrencyList: Set[CurrencyCode.CurrencyName]
   implicit val DefaultCurrency: CurrencyCode.CurrencyName
-  val Separetor: String
+  val Separator: String
 }
 
-object Default extends DefaultValues {
+object DefaultValues extends Default {
   val TopCount: Int = 10
   val CurrencyList: Set[CurrencyCode.CurrencyName] = Converter.exchangeRate.keySet
   implicit val DefaultCurrency: CurrencyCode.CurrencyName = CurrencyCode.Rub
-  val Separetor = ","
+  val Separator = ","
 }
