@@ -8,6 +8,7 @@ import finalTask.transforms._
 case class StaticsServiceParameters(
                                     path: String,
                                     statisticsFunctions: Map[String, Seq[Expenses] => Result],
+                                    filters: Filters[Expenses],
                                     fileRule: Rule
                                    )
 
@@ -27,13 +28,13 @@ class StaticsService(staticsServiceParameters : StaticsServiceParameters) {
   )
 
 
-  private val result: Seq[Result] = staticsServiceParameters.statisticsFunctions.map { case (name, function) =>
+  private lazy val result: Seq[Result] = staticsServiceParameters.statisticsFunctions.map { case (name, function) =>
     function match {
       case singleFunc: (Seq[Expenses] => SingleResult) =>
-        StatisticsCalculator.Calculate[Expenses, SingleResult](convertedData, singleFunc)
+        StatisticsCalculator.Calculate[Expenses, SingleResult](convertedData, singleFunc, staticsServiceParameters.filters)
 
       case multiFunc: (Seq[Expenses] => MultiResult) =>
-        StatisticsCalculator.Calculate[Expenses, MultiResult](convertedData, multiFunc)
+        StatisticsCalculator.Calculate[Expenses, MultiResult](convertedData, multiFunc, staticsServiceParameters.filters)
     }
   }.toSeq
 

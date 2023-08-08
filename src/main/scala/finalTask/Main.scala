@@ -17,16 +17,16 @@ object Main extends App{
 
 
 
-
   val staticsService = new StaticsService(
         StaticsServiceParameters(
           path,
           StatisticsFunctions.getStatics(),
+          DefaultFilters,
           FileRule
       )
   )
 
-  staticsService.getResult().foreach(println)
+  val result = staticsService.getResult()
 
-
+  result.foreach(println)
 }
