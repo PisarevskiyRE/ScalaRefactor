@@ -6,12 +6,9 @@ import java.time.temporal.ChronoUnit
 object Task1_right extends App{
 
   case class Student private(name: String, birth: String, enrollmentYear: Int)
-
   object Student{
     def apply(name: String, birth: String, enrollmentYear: Int) = new Student(name, birth, enrollmentYear)
   }
-
-
 
 
   class StudentInfoProvider(implicit now: LocalDate) {
